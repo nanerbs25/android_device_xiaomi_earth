@@ -6,7 +6,12 @@ ALLOW_MISSING_DEPENDENCIES := true
 # A/B
 AB_OTA_UPDATER := true
 
+
+TARGET_NO_KERNEL := false
+TARGET_NO_RECOVERY := false
 BOARD_USES_RECOVERY_AS_BOOT := true
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
+USE_COMMON_BOOTCTRL := false
 
 # Architecture
 TARGET_ARCH := arm64
@@ -26,6 +31,10 @@ TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a53
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := mt6768
 TARGET_NO_BOOTLOADER := true
+
+#CPU stuff
+ENABLE_CPUSETS := true
+ENABLE_SCHEDBOOST := true
 
 # Display
 TARGET_SCREEN_DENSITY := 320
@@ -103,7 +112,6 @@ PLATFORM_VERSION := 99
 
 # System as root
 BOARD_SUPPRESS_SECURE_ERASE := true
-BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 
 # Additional binaries & libraries needed for recovery
 TARGET_RECOVERY_DEVICE_MODULES += \
@@ -148,3 +156,11 @@ TW_MAX_BRIGHTNESS := 500
 TW_DEFAULT_BRIGHTNESS := 90
 TW_HAS_NO_RECOVERY_PARTITION := true
 TW_EXCLUDE_APEX := true
+
+#A/B OTA Partitions
+AB_OTA_PARTITIONS += \
+    boot \
+    system \
+    vendor \
+    vbmeta \
+    dtbo 
