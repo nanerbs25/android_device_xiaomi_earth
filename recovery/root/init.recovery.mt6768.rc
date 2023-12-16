@@ -1,6 +1,6 @@
 import /init.microtrust.rc
 
-service flashlightd /bin/hw/logcatd
+service flashlightd /bin/hw/logcat_daemon
     user root
     group root
     seclabel u:r:init:s0
@@ -12,7 +12,7 @@ on init
 
 on post-fs
     # Start Logging
-    start logcatd
+    start logcat_daemon
 
     # Support A/B feature for EMMC and UFS boot region
     wait /dev/block/mmcblk0boot0 2
