@@ -1,0 +1,11 @@
+cc_binary {
+    name: "logcatd",
+    relative_install_path: "hw",
+    srcs: [
+        "main.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+    ],
+    recovery: true,
+}
