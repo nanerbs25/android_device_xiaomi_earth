@@ -1,62 +1,63 @@
-# TWRP Device Tree for Xiaomi Redmi 12C (earth)
-===========================================
-
+TWRP device tree for Xiaomi Redmi 12C (earth)
+======================================
 The Redmi 12C is a budget range smartphone from Redmi, Released 2022, December 31
-This project is licensed under the terms of the Boost Software License
+
+======================================
+Note: This is a forked tree, All credits for Everything to YZBruh.
+======================================
 
 ## Device specifications
 
-Basic   | Spec Sheet
--------:|:-------------------------
-OS        | Android 12, MIUI 13        
-CPU     | Octa-core (2x2.0 GHz Cortex-A75 & 6x1.8 GHz Cortex-A55)
-Chipset | MediaTek Helio G88 (12nm)
-GPU     | Mali-G52 MC2
-Memory  | 4GB/6GB RAM
-Storage | 64GB/128GB
-MicroSD | microSDXC (dedicated slot)
-Battery | Non-removable Li-Ion 5000 mAh battery
-Resolution | 1080 x 2400 pixels, 20:9 ratio (~405 ppi density)
-Camera (Rear)  | 50 MP, f/1.8, (wide) / 0.8 MP, f/2.4 (depth)
-Rear Camera Features | LED flash, HDR, panorama
-Video        | 1080p@30fps        
-Camera (Front)  | 8 MP, f/2.0, (wide)
-Features| Fingerprint (in the back), accelerometer, proximity, compass
+| Basic                   | Spec Sheet                                                  |
+| -----------------------:|:----------------------------------------------------------- |
+| CPU                     | Octa-core (2x2.0 GHz Cortex-A75 & 6x1.8 GHz Cortex-A55)     |
+| Chipset                 | MediaTek Helio G88 (MT6768 12 nm)                           |
+| GPU                     | Mali-G52 MC2                                                |
+| Memory                  | 4GB/6GB RAM                                                 |
+| Shipped Android version | 10.0 (Go edition)                                           |
+| SIM                     | Dual SIM (Nano-SIM, dual stand-by)                          |
+| Storage                 | 64/128 GB                                                   |
+| MicroSD                 | microSDXC, up to 128 GB                                     |
+| Battery                 | Non-removable Li-Po 5000 mAh battery                        |
+| Dimensions              | 168.8 x 76.4 x 8.8 mm (6.65 x 3.01 x 0.35 in)               |
+| Display                 | 6.71 inches, 106.5 cm2 (~82.6% screen-to-body ratio)        |
+| Sensors                 | Accelerometer, Gyro, Proximity, Compass                     |
+| Features                | Fingerprint (rear-mounted), accelerometer                   |
 
-## Situation
-- [X] Correct screen/recovery size
-- [ ] Working Touch, screen
-- [X] Backup to internal/microSD
-- [X] Restore from internal/microSD
-- [X] reboot to system
-- [X] ADB
-
-Medium checks
-- [X] update.zip sideload
-- [X] UI colors (red/blue inversions)
-- [X] Screen goes off and on
-- [X] F2FS/EXT4 Support, exFAT/NTFS where supported
-- [X] all important partitions listed in mount/backup lists
-- [X] backup/restore to/from external (USB-OTG) storage
-- [X] backup/restore to/from adb (https://gerrit.omnirom.org/#/c/15943/)
-- [X] decrypt /data
-- [X] Correct date
-
-Minor checks
-- [X] MTP export
-- [X] reboot to bootloader
-- [X] reboot to recovery
-- [X] poweroff
-- [X] battery level
-- [X] temperature
-- [X] encrypted backups
-- [ ] input devices via USB (USB-OTG) - keyboard, mouse and disks (not supported by the device)
-- [ ] USB mass storage export
-- [X] set brightness
-- [X] vibrate
-- [X] screenshot
-- [ ] partition SD card
+| What's Working?                      | What's not Working?        |
+| ------------------------------------:|:---------------------------|
+| • Touch                              | • Decryption               |
+| • MTP                                |                            |
+| • ADB                                |                            |
+| • Flashlight                         |                            |
+| • Detect Dynamic Partitions          |                            |
+| • Flashing a zip                     |                            |
 
 ## Device picture
 
 ![Redmi 12C](https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-redmi-12c-1.jpg "Redmi 12C")
+
+## Build instruction
+
+```shell
+. build/envsetup.sh
+lunch omni_A7S
+mka recoveryimage -j $(($(nproc) + 1))
+```
+
+## Copyright
+
+```text
+    # Copyright (C) 2023 The Android Open Source Project
+    # Copyright (C) 2023 TeamWin Recovery Project
+
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    # http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
